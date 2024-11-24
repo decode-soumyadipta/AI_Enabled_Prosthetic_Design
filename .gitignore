@@ -1,0 +1,65 @@
+# Node.js (React) related files
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+
+# React build output
+build/
+dist/
+public/
+
+# dotenv environment variable files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# MacOS system files
+.DS_Store
+
+# Python related files (Flask backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Flask specific files
+instance/
+.env
+
+# Virtual Environment (Flask)
+venv/
+ENV/
+env/
+.venv/
+.venv/
+
+# Flask migration files
+migrations/
+
+# Coverage reports
+.coverage
+*.coveragerc
+nosetests.xml
+test-coverage/
+*.hypothesis/
+
+# IDE/editor files (VSCode, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Log files
+*.log
+*.sqlite
+
+# Docker related files (if any)
+docker-compose.yml
+Dockerfile
+
+# Operating system-specific files
+Thumbs.db
+Desktop.ini
