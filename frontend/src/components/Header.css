@@ -1,0 +1,22 @@
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+  }
+  
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .header nav a:hover {
+    text-decoration: underline;
+  }
+  

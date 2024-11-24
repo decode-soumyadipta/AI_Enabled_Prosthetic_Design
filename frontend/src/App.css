@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #2d2d2d;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
