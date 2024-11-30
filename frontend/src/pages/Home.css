@@ -1,0 +1,140 @@
+/* Container for alignment */
+.home {
+    padding: 50px 0; /* Remove horizontal padding */
+    margin: 0;
+}
+
+/* Hero Text (Welcome to) */
+.hero-text {
+    font-size: 4rem; /* Make it larger */
+    font-weight: 900; /* Extra bold */
+    color: #ffffff; /* Black color */
+    line-height: 0.3;
+    display: block; /* Force it to take its own line */
+}
+
+/* AI Highlight and Cool Animation */
+.ai-highlight {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #007bff; /* Sky blue */
+    position: relative;
+    display: inline-block;
+    animation: ai-animation 2s infinite; /* Cool AI animation */
+}
+
+/* Black Text for Design */
+.design-text {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #fffbfb;
+    margin-left: 5px; /* Slight spacing */
+}
+
+/* Positioning of Dot over "I" */
+.main-heading .ai-highlight::after {
+    content: '';
+    position: absolute;
+    top: -1px; /* Adjust the dot position above the "I" */
+    left: 41px; /* Center the dot over the "I" */
+    width: 10px;
+    height: 10px;
+    background-color: #007bff; /* Sky blue color for the dot */
+    border-radius: 50%;
+}
+
+/* Subheading with Typing Animation */
+.sub-heading {
+    font-size: 1.6rem;
+    color: #ffffff84;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    text-align: left;
+    margin-top: 40px; /* Increase gap between lines */
+    display: inline-block; /* For typing effect */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow text */
+    animation: typing 3s steps(50, end), blink-caret 0.8s step-end infinite;
+    border-right: 4px solid #000; /* Bolder black cursor */
+    box-sizing: border-box;
+}
+
+/* Keyframes for Typing Animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 35%; /* You can adjust this width */
+    }
+}
+
+/* Blinking Caret */
+@keyframes blink-caret {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #000; /* Black for better visibility */
+    }
+}
+
+/* Keyframes for AI Animation */
+@keyframes ai-animation {
+    0% {
+        background: linear-gradient(90deg, #007bff, #14c6a2, #007bff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    50% {
+        background: linear-gradient(90deg, #099478, #007bff, #14c6a2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    100% {
+        background: linear-gradient(90deg, #007bff, #14c6a2, #007bff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+/* Step Cards */
+.step-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.card {
+    background:#23012c95; /* Set card background to white */
+    border: 5px solid ; /* No solid border */
+    border-color:rgb(70, 34, 86);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative; /* Ensure that border-radius applies to the card */
+    overflow: hidden; /* Ensure rounded corners are applied to all elements inside the card */
+  
+    border-image-slice: 1;
+}
+.card h2 {
+    font-size: 1.8rem;
+    opacity: 1; /* Ensure full opacity for the text */
+    color: white;; /* White text color for step titles */
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color:white;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+

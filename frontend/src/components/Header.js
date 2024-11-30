@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <h1>AI-Enabled Prosthetic Design</h1>
+        <h1>ScanGen</h1>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/upload">Upload</Link>

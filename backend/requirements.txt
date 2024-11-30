@@ -1,0 +1,7 @@
+pandas
+Flask
+Flask-Cors
+openvino-dev
+numpy
+opencv-python
+pytest

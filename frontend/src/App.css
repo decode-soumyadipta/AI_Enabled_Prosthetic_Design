@@ -2,19 +2,34 @@ body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #f4f4f9;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  footer {
-    background-color: #2d2d2d;
-    color: white;
+    background-image: url('background-image.jpeg');
+    background-size:inherit;
+    background-attachment: fixed;
+    background-position: center;
+    color: #333;
+}
+
+main {
+    padding: 40px 20px;
+    min-height: calc(100vh - 100px);
+}
+
+footer {
+    background-color: #1a1a1a;
+    color: #ccc;
     text-align: center;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-  
+    padding: 20px;
+    font-size: 14px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffcc00;
+}

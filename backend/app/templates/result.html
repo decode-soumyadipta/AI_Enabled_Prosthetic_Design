@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosthetic Result</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/STLLoader.js"></script>
+</head>
+<body>
+    <h1>Prosthetic Result</h1>
+    <div id="viewer" style="width: 100%; height: 500px;"></div>
+
+    <script>
+        const stlFileUrl = "{{ stl_file_url }}";
+
+        // Set up the scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 500, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, 500);
+        document.getElementById('viewer').appendChild(renderer.domElement);
+
+        // Add light
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(0, 1, 1).normalize();
+        scene.add(light);
+
+        // Load the STL file
+        const loader = new THREE.STLLoader();
+        loader.load(stlFileUrl, function (geometry) {
+            const material = new THREE.MeshStandardMaterial({ color: 0x0077be });
+            const mesh = new THREE.Mesh(geometry, material);
+            scene.add(mesh);
+
+            camera.position.z = 5;
+            renderer.render(scene, camera);
+        }, undefined, function (error) {
+            console.error("Error loading STL file:", error);
+        });
+    </script>
+</body>
+</html>

@@ -1,22 +1,40 @@
 .header {
-    background-color: #007bff;
+    background: linear-gradient(250deg, #000000, #23012c);
     color: white;
     padding: 20px;
-  }
-  
-  .header .container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  .header nav a {
+}
+
+.header h1 {
+    font-size: 30px;
+    font-weight: bolder;
+    transition: transform 0.3s ease;
+}
+
+.header h1:hover {
+    transform: scale(1.1);
+}
+
+.header nav a {
     color: white;
-    margin: 0 10px;
+    margin: 0 15px;
     text-decoration: none;
-  }
-  
-  .header nav a:hover {
-    text-decoration: underline;
-  }
-  
+    font-size: 16px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+    color: #ffcc00;
+    border-bottom: 2px solid #ffcc00;
+}

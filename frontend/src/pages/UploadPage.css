@@ -1,0 +1,72 @@
+/* UploadPage.css */
+
+/* Style the upload page container */
+.upload-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .upload-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #971eb8;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .dropbox-label {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: #971eb8;
+    cursor: pointer;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .dropbox-label:hover {
+    background-color: #e9ecef;
+  }
+  
+  .guidelines {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .heading_page{
+color: #f8f9fa;
+    
+  }
+
+  .upload-btn {
+    padding: 10px 20px;
+    background-color:  #971eb8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .upload-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .upload-btn:hover:enabled {
+    background-color: #7f13a388;
+  }
+  
