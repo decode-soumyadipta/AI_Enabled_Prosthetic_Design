@@ -1,5 +1,6 @@
 
-# 🦾 AI-Enabled Prosthetic Design Using Openvino Software Toolkit (🤖optimizing unet-camvid model)
+# 🦾 AI-Enabled Prosthetic Design Using Openvino Software Toolkit
+# (🤖optimizing unet-camvid model)
 
 Welcome to the **AI-Enabled Prosthetic Design** project, where advanced AI technologies meet human-centric design! This platform leverages CT scan data and machine learning to create and customize prosthetic limbs, aiming to revolutionize prosthetics for better fit, functionality, and accessibility.
 
