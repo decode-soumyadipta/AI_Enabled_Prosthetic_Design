@@ -39,16 +39,31 @@ To improve computational efficiency, the **UNet-based segmentation model** was q
 
 #### **Relevant Code**: `optimization.py`  
 ```python  
-from openvino.tools.pot import optimize  
+# File: backend/intel/optimization.py
+from openvino.tools.pot import PTQ, DataLoader, Metric
 
-# Configure and optimize the model  
-optimized_model_path = "intel_models/optimized_model.xml"  
-config = {  
-    "model": "intel_models/unet-camvid-onnx-0001.xml",  
-    "optimization": ["INT8"],  
-    "engine": "openvino",  
-}  
-optimize(config, optimized_model_path)  
+def optimize_model():
+    """Optimize the model using Post-Training Optimization."""
+    optimized_model_path = "C:/Users/soumy/OneDrive/Desktop/AI_Enabled_Prosthetic_Design/backend/intel/unet-camvid-onnx-0001/FP16/optimized_model.xml"
+
+    # Example POT configuration
+    config = {
+        "model": "C:/Users/soumy/OneDrive/Desktop/AI_Enabled_Prosthetic_Design/backend/intel/unet-camvid-onnx-0001/FP16/unet-camvid-onnx-0001.xml",
+        "engine": "openvino",
+        "optimization": ["INT8"],
+    }
+
+    # Create the Post-Training Quantization object (PTQ) for INT8 optimization
+    pot = PTQ(config)
+
+   
+    data_loader = DataLoader()
+
+    # Running the optimization process
+    pot.optimize(data_loader, optimized_model_path)
+
+    return optimized_model_path
+  
 ```  
 
 ---
