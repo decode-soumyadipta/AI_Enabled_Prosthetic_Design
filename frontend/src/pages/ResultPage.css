@@ -1,0 +1,35 @@
+/* File: ResultPage.css */
+.result-page {
+    padding: 20px;
+  }
+  
+  .stl-viewer {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  .material-selection {
+    margin-top: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .physics-analysis {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 150px;
+    overflow-y: auto;
+  }
+  .physics-analysis textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+  }
+  
