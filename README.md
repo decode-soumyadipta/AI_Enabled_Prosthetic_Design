@@ -232,4 +232,10 @@ frontend/
 ## 💡 Key Takeaways  
 - **Intel OpenVINO + NNCF**: Achieves real-time inference with optimized AI models.  
 - **Scalable Design**: Modular architecture supports dynamic device allocation (CPU/GPU).  
-- **Efficient Visualization**: High-performance rendering pipeline built with WebAssembly and Three.js.  
+- **Efficient Visualization**: High-performance rendering pipeline built with WebAssembly and Three.js.
+
+---
+
+## 🔮Future Plan
+
+We plan to test the inference on Gaudi Xeon processors in the future, but haven’t completed it yet as it requires a work email and billing setup— we’re working on it with humble patience!
