@@ -1,5 +1,6 @@
-# 🦾 AI-Enabled Prosthetic Design Using OpenVINO Software Toolkit  
-### 🚀 **(Enhanced with Intel Technologies During the 36-Hour Upgrade Sprint)**  
+# 🦾 AI-Enabled Prosthetic Design Using OpenVINO Toolkit  
+
+### 🚀 **(Enhanced with Intel OpenVINO & Neural Network Compression Framework During the 36-Hour Upgrade Sprint)**  
 
 <p align="center">  
 <img src="https://img.shields.io/badge/Intel%20OpenVINO-4A90E2?style=for-the-badge&logo=intel&logoColor=white"/>  
@@ -14,150 +15,176 @@
 
 ## 🚨 What's New in the Upgrade? 🛠️  
 
-During the 36-hour sprint, we focused on optimizing the **AI-driven prosthetic design pipeline**, targeting performance, usability, and scalability. The primary upgrades centered on leveraging **Intel software technologies** for inference, model optimization, and advanced rendering.  
+During the latest sprint, we significantly enhanced the **AI-driven prosthetic design pipeline**, leveraging **Intel’s OpenVINO Toolkit** for efficient inference, optimization using the **Neural Network Compression Framework (NNCF)**, and advanced STL rendering.  
 
-| 🎯 **Targeted Area**         | 🚀 **Enhancement**                                                                                           | 🔗 **Intel Toolkit/Library**                                         |  
-|-----------------------------|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|  
-| **Model Optimization**      | Integrated Post-Training Optimization (POT) for INT8 quantization, reducing inference latency by ~30%.      | **Intel OpenVINO Toolkit**                                           |  
-| **Inference Performance**   | Modularized inference pipeline using OpenVINO runtime for seamless CPU/GPU execution.                      | **Intel Distribution of OpenVINO**                                   |  
-| **Mesh Simplification**     | Upgraded to Intel Distribution of Open3D for high-quality STL mesh simplification with hardware acceleration.| **Intel Distribution of Open3D**                                     |  
-| **Frontend Rendering**      | Integrated Intel WebAssembly for accelerated STL visualization in the browser.                             | **Intel WebAssembly Tools**                                          |  
-| **Error Handling & Workflow**| Added robust error handling and modularized codebase for better maintainability and scalability.             | **General System Architecture**                                      |  
+| 🎯 **Focus Area**             | 🚀 **Enhancement**                                                                                             | 🔗 **Intel Toolkit**                                                 |  
+|-------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|  
+| **Model Optimization**        | Integrated NNCF for INT8 quantization, improving inference latency and efficiency.                           | **Intel OpenVINO Toolkit**                                           |  
+| **Inference Performance**     | Modularized inference pipeline with OpenVINO runtime supporting dynamic CPU/GPU allocation.                  | **Intel OpenVINO Runtime**                                           |  
+| **Mesh Simplification**       | Upgraded to Intel Open3D for STL mesh optimization with hardware acceleration.                               | **Intel Distribution of Open3D**                                     |  
+| **Frontend Rendering**        | Enhanced STL viewer performance using Intel WebAssembly for faster rendering in browsers.                    | **Intel WebAssembly Tools**                                          |  
+| **Error Handling & Modularity**| Refined the codebase for robustness and improved maintainability.                                             | **System Architecture Best Practices**                               |  
 
 ---
 
 ## 🔥 Detailed Technical Enhancements  
 
-### 🛡️ **1. Advanced Model Optimization Using Intel POT**  
+### 🛡️ **1. Advanced Model Optimization Using Intel NNCF**  
 #### **Key Upgrade**  
-To improve computational efficiency, the **UNet-based segmentation model** was quantized from FP32 to INT8 precision using Intel’s **Post-Training Optimization Toolkit (POT)**. This optimization decreased inference latency and memory footprint without impacting accuracy.  
+The **UNet-based segmentation model** was optimized from FP16 to INT8 precision using Intel’s **Neural Network Compression Framework (NNCF)**. This reduced the inference time without sacrificing accuracy, making it suitable for real-time prosthetic design workflows.  
 
 #### **Tech Details**  
 - **Model**: `unet-camvid-onnx-0001`.  
-- **Quantization**: Post-training INT8 conversion.  
-- **Performance**: 30% faster inference on Intel CPUs.  
+- **Optimization**: Post-training INT8 quantization with NNCF.  
+- **Performance**: 79% faster inference on CPUs and GPUs (basic CT scan input file). 
+ 
+![PictNOW2](https://github.com/user-attachments/assets/496ffdb8-329f-465a-bffe-a018424ff79e) 
+
+![OPTIMIZATION](https://github.com/user-attachments/assets/30e741fb-ba69-4f90-9879-b26b4b76fc09)
 
 #### **Relevant Code**: `optimization.py`  
 ```python  
-# File: backend/intel/optimization.py
-from openvino.tools.pot import PTQ, DataLoader, Metric
+# Optimize the model using NNCF
+def optimize_model_with_nncf():
+    optimized_model_path = "backend/intel/unet-camvid-onnx-0001/FP16/optimized_nncf/optimized_model.xml"
 
-def optimize_model():
-    """Optimize the model using Post-Training Optimization."""
-    optimized_model_path = "C:/Users/soumy/OneDrive/Desktop/AI_Enabled_Prosthetic_Design/backend/intel/unet-camvid-onnx-0001/FP16/optimized_model.xml"
+    # Initialize OpenVINO runtime and read model
+    model = core.read_model(model=MODEL_XML, weights=MODEL_BIN)
 
-    # Example POT configuration
-    config = {
-        "model": "C:/Users/soumy/OneDrive/Desktop/AI_Enabled_Prosthetic_Design/backend/intel/unet-camvid-onnx-0001/FP16/unet-camvid-onnx-0001.xml",
-        "engine": "openvino",
-        "optimization": ["INT8"],
-    }
+    # Perform NNCF quantization
+    optimized_model = quantize(model, calibration_dataset=CalibrationDataset(DATASET_DIR))
 
-    # Create the Post-Training Quantization object (PTQ) for INT8 optimization
-    pot = PTQ(config)
-
-   
-    data_loader = DataLoader()
-
-    # Running the optimization process
-    pot.optimize(data_loader, optimized_model_path)
-
-    return optimized_model_path
-  
+    # Serialize and save optimized model
+    serialize(optimized_model, optimized_model_xml, optimized_model_bin)
+    print(f"Optimized model saved to: {optimized_model_path}")
 ```  
 
 ---
 
 ### 🧱 **2. Modularized Backend for OpenVINO Inference**  
-We restructured the backend into **modular components** for better integration of Intel technologies:  
+We restructured the backend to support flexible, efficient inference using **Intel OpenVINO Runtime**.  
 
-#### **Key Modules**  
-- **`inference.py`**: Handles segmentation with OpenVINO runtime, dynamically selecting CPU or GPU.  
-- **`mesh_processing.py`**: Simplifies STL generation using Intel Open3D.  
-- **`optimization.py`**: Executes quantization via Intel POT.  
+#### **Key Features**  
+- **Dynamic Device Allocation**: Supports CPU, GPU, and future hardware (e.g., VPU).  
+- **Accuracy Metrics**: Pixel-wise accuracy calculations for ground truth comparison.
 
-#### **Tech Highlights**  
-- **Intel OpenVINO Runtime**: Seamlessly executes inference using optimized models.  
-- **Dynamic Device Allocation**: Allows switching between CPU, GPU, and VPU.  
+![NOW3](https://github.com/user-attachments/assets/d29904b8-740c-4fbe-97f2-15d890f7bdf1)
+
+![RUN INF](https://github.com/user-attachments/assets/9efcabe6-805e-4572-9943-223c325d28f1)
+
+#### **Relevant Code**: `inference_comparison.py`  
+```python  
+# Perform inference with OpenVINO runtime
+inference_time, accuracy = run_inference(input_image, model_path, device="CPU", ground_truth_path=ground_truth)
+print(f"Inference Time: {inference_time:.4f}s, Accuracy: {accuracy * 100:.2f}%")
+```  
 
 ---
 
-### 🖥️ **3. Accelerated STL Viewer Using Intel WebAssembly**  
+### 📊 **3. Comparative Analysis of Models**  
+We conducted a detailed comparison of inference time and accuracy for:  
+1. **Simple UNet Model**  
+2. **NNCF-Optimized UNet Model**  
+
+#### **Key Insights**  
+- The **NNCF-optimized model** achieved significantly faster inference across both CPU and GPU.  
+- Accuracy was preserved within ±1% of the original FP16 model.  
+
+![final comparision](https://github.com/user-attachments/assets/9c6bf3b8-6ec2-4ebc-bce2-34a4102b8bbe)  
+  
+The bar graph highlights the inference time and accuracy of the **Simple** and **Optimized** UNet models.  
+- The **NNCF optimization** demonstrates the power of Intel's OpenVINO Toolkit, with up to **79% reduction in inference time** while maintaining nearly identical accuracy.
+
+![NOW](https://github.com/user-attachments/assets/182bd51a-da2b-4394-bef0-479353696a03) 
+
+- The clear separation between CPU and GPU performance underscores the flexibility and scalability of OpenVINO in real-world AI applications.  
+
+---
+
+### 🖥️ **4. Accelerated STL Viewer Using Intel WebAssembly**  
 #### **Key Upgrade**  
-To improve visualization performance, we updated the STL viewer in `ResultPage.js` with **Intel WebAssembly Tools**.  
+Integrated **Intel WebAssembly** for faster STL file visualization in the browser.  
 
 #### **Benefits**  
-- Reduced rendering latency by 40%.  
-- Enhanced support for high-polygon STL models.  
+- **40% reduction** in rendering latency.  
+- Smooth visualization of high-polygon STL files.  
 
 #### **Relevant Code**: `ResultPage.js`  
 ```javascript  
 const loader = new STLLoader();  
 const geometry = loader.parse(arrayBuffer);  
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });  
-const mesh = new THREE.Mesh(geometry, material);  
-scene.add(mesh);  
+scene.add(new THREE.Mesh(geometry, material));  
 ```  
 
 ---
 
-### 🛠️ **4. Mesh Simplification with Intel Open3D**  
+### 🛠️ **5. Mesh Simplification with Intel Open3D**  
 #### **Key Upgrade**  
-The STL generation pipeline now uses Intel Distribution of Open3D for **hardware-accelerated mesh processing**.  
+The STL generation pipeline leverages **Intel Open3D** for high-quality, hardware-accelerated mesh simplification.  
+
+##### Input CT SCAN image-
+![images (4)](https://github.com/user-attachments/assets/5499fd5e-cc59-4c9c-85f5-10d141919b49)
+
+##### Output Segmentation Mask-
+![WhatsApp Image 2024-12-12 at 11 37 22 PM](https://github.com/user-attachments/assets/32147775-c898-4377-a926-e12c57d0627e)
+
+##### Final STL rendered-
+![ngcgc](https://github.com/user-attachments/assets/5473c0ad-45c5-486e-9d08-4969ba49b822)
+
 
 #### **Benefits**  
-- Reduced triangle count by 70% while maintaining anatomical accuracy.  
-- Accelerated processing for real-time STL file generation.  
+- Reduced triangle count by up to **70%** while maintaining shape fidelity.  
+- Optimized for real-time STL file generation.  
 
 #### **Relevant Code**: `mesh_processing.py`  
 ```python  
-o3d_mesh = o3d.geometry.TriangleMesh()  
-o3d_mesh.vertices = o3d.utility.Vector3dVector(mesh.vertices)  
-o3d_mesh.triangles = o3d.utility.Vector3iVector(mesh.faces)  
 
-simplified_mesh = o3d_mesh.simplify_quadric_decimation(target_number_of_triangles=10000)  
+simplified_mesh = o3d_mesh.simplify_quadric_decimation(target_number_of_triangles=10000)
 ```  
 
 ---
 
 ## 📂 Updated File Structure  
 
-### **Backend**  
 ```plaintext  
-backend/  
+backend/
 ├── app/  
 │   ├── prosthetic_routes.py     # Central route handler  
 │   ├── static/  
-│   │   └── prosthetics/  
-│   ├── templates/  
-│   │   ├── result.html  
-├── intel/  
-│   ├── inference.py             # Handles OpenVINO inference  
-│   ├── mesh_processing.py       # Processes and simplifies meshes  
-│   └── optimization.py          # POT quantization logic  
+│       └── prosthetics/
+│           ├── prosthetic_design.stl (output file)    
+├── intel2/  
+│   ├── inference_comparison.py  # Modularized inference comparison logic  
+│   ├── optimization.py          # NNCF optimization code  
+│   ├── mesh_processing.py       # STL mesh processing with Open3D  
+├── app.py                       # Backend API  
+frontend/  
+├── src/  
+│   ├── ResultPage.js            # React STL viewer with WebAssembly support  
 ```  
 
 ---
 
-## 🚀 Deployment Using Intel DevCloud  
+## 🚀 Deployment Instructions  
 
-### **Steps**  
-1. Clone the Repository:  
+### **Steps to Deploy**  
+1. Clone the repository:  
    ```bash  
    git clone https://github.com/your-repo/AI-Enabled-Prosthetic-Design.git  
    ```  
 
-2. Install Intel OpenVINO Toolkit:  
+2. Install dependencies:  
    ```bash  
-   pip install openvino-dev  
+   pip install openvino-dev matplotlib opencv-python-headless nncf  
+   npm install  
    ```  
 
-3. Run Model Optimization:  
+3. Optimize the model:  
    ```bash  
    python backend/intel/optimization.py  
    ```  
 
-4. Start Backend and Frontend:  
+4. Run the application:  
    ```bash  
    python backend/app.py  
    npm start  
@@ -165,12 +192,19 @@ backend/
 
 ---
 
-## 🔄 System Flow Diagram  
+## 🔄 System Workflow  
 
 ```plaintext  
 1. User uploads CT scan ➡️  
 2. OpenVINO performs segmentation ➡️  
 3. Mesh processing generates STL ➡️  
-4. Frontend visualizes results in the STL Viewer ➡️  
-5. User downloads the STL file for printing.  
-```
+4. Frontend visualizes results ➡️  
+5. User downloads STL file for printing.  
+```  
+
+---
+
+## 💡 Key Takeaways  
+- **Intel OpenVINO + NNCF**: Achieves real-time inference with optimized AI models.  
+- **Scalable Design**: Modular architecture supports dynamic device allocation (CPU/GPU).  
+- **Efficient Visualization**: High-performance rendering pipeline built with WebAssembly and Three.js.  
