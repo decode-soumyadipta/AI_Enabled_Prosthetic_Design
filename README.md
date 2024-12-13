@@ -239,3 +239,9 @@ frontend/
 ## 🔮Future Plan
 
 We plan to test the inference on Gaudi Xeon processors in the future, but haven’t completed it yet as it requires a work email and billing setup— we’re working on it with humble patience!
+
+**Our vision includes printing  functional prosthetics with real-time physics analysis of the generated STL with automated AI Suggestions. The result page will look like-**
+
+![c c](https://github.com/user-attachments/assets/c072906a-289c-48ad-8fce-b72538813f78)
+
+To accomplish this, we need to fine-tune our model for seamless compatibility with physics engines. These optimizations can then be further enhanced using **Intel's oneAPI system toolkit**. The intensive computational tasks involved will be efficiently handled by **Intel's Ultra series processors** and dedicated hardware solutions, ensuring peak performance and reliability.
