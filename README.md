@@ -126,9 +126,11 @@ We deployed the optimized model on Intel Tiber AI Cloud utilizing the AI PC Max 
 The chart showcases the exceptional performance of the Intel AI PC Max Series GPU on the Tiber Cloud, emphasizing the scalability.
 ty and efficiency of Intel technologies in real-world AI applications.
 
-![adsc](https://github.com/user-attachments/assets/eb1877b7-c392-4edd-8b07-110c97be8274)
+![ascasx](https://github.com/user-attachments/assets/f618c81d-d938-4a03-95fb-5ffb89b54fb4)
 
-Deployed over **Intel Ultra Processor Series 1**. (Scalable, with good inference time)
+![adsc](https://github.com/user-attachments/assets/a7a9c297-6b2a-478e-acb3-3521812bda75)
+
+Deployed over **Intel Ultra Processor Series 1** and **4th Gen Intel Xeon Processor with HBM**. (Scalable, with good inference time)
 
 ---
 ### 🖥️ **5. Accelerated STL Viewer Using Intel WebAssembly**  
