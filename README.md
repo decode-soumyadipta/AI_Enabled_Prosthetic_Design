@@ -28,7 +28,7 @@ During the latest sprint, we significantly enhanced the **AI-driven prosthetic d
 | **Inference Performance**     | Modularized inference pipeline with **OpenVINO runtime** supporting **dynamic CPU/GPU allocation**.                  | **Intel OpenVINO Runtime**                                           |
 | **Mesh Simplification**       | Upgraded to **Intel Open3D** for STL mesh optimization with hardware acceleration.                               | **Intel Distribution of Open3D**                                     |
 | **Frontend Rendering**        | Enhanced STL viewer performance using **Intel WebAssembly** for faster rendering in browsers.                    | **Intel WebAssembly Tools**                                          |
-| **Intel Cloud Deployment**    | Deployed on **Intel Tiber AI Cloud** using **AI PC Max Series GPU** for exceptional performance gains.               | **Intel Tiber AI Cloud**                                             |
+| **Intel Cloud Deployment**    | Deployed on **Intel Tiber AI Cloud** using **AI PC Max Series GPU, Ultra Series 1 and 4th Gen Xeon Processor** for exceptional performance gains.               | **Intel Tiber AI Cloud**                                             |
 | **Error Handling & Modularity**| Refined the codebase for robustness and improved maintainability.                                           | **System Architecture Best Practices**                               |
 
 
