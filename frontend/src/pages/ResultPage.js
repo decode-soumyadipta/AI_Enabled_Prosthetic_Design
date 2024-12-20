@@ -3,24 +3,36 @@ import React, { useState, useEffect } from "react";
 import * as THREE from "three";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader";
 import './ResultPage.css';
+import { loadWasmModule } from "./wasmUtils"; // Utility to load WASM modules
 
 function ResultPage() {
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
   const [material, setMaterial] = useState("PLA");
   const [physicsAnalysis, setPhysicsAnalysis] = useState("");
+  const [wasmModule, setWasmModule] = useState(null);
+
+  // Load WebAssembly module on component mount
+  useEffect(() => {
+    loadWasmModule("/path/to/intel-wasm-module.wasm").then((module) => {
+      setWasmModule(module);
+    }).catch(() => {
+      setError("Failed to load WebAssembly module.");
+    });
+  }, []);
 
   useEffect(() => {
-    if (file) {
+    if (file && wasmModule) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         const arrayBuffer = fileReader.result;
         renderSTLFile(arrayBuffer);
+        analyzePhysics(arrayBuffer);
       };
       fileReader.onerror = () => setError("Failed to read the file");
       fileReader.readAsArrayBuffer(file);
     }
-  }, [file]);
+  }, [file, wasmModule]);
 
   const renderSTLFile = (arrayBuffer) => {
     const viewer = document.getElementById("stlViewer");
@@ -40,9 +52,9 @@ function ResultPage() {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    const boundingBox = new THREE.Box3().setFromObject(mesh);
-    const center = new THREE.Vector3();
-    boundingBox.getCenter(center);
+    // Calculate bounding box with WebAssembly for enhanced performance
+    const boundingBox = wasmModule.calculateBoundingBox(arrayBuffer);
+    const center = new THREE.Vector3(boundingBox.centerX, boundingBox.centerY, boundingBox.centerZ);
 
     camera.position.set(center.x, center.y, center.z + 100);
     camera.lookAt(center);
@@ -53,6 +65,14 @@ function ResultPage() {
       renderer.render(scene, camera);
     };
     animate();
+  };
+
+  const analyzePhysics = (arrayBuffer) => {
+    if (wasmModule) {
+      // Perform material-specific physics calculations using WebAssembly
+      const analysisResult = wasmModule.calculatePhysics(arrayBuffer, material);
+      setPhysicsAnalysis(analysisResult);
+    }
   };
 
   const handleFileChange = (e) => {
@@ -68,9 +88,6 @@ function ResultPage() {
   const handleMaterialChange = (e) => {
     const selectedMaterial = e.target.value;
     setMaterial(selectedMaterial);
-
-    let analysis = `Calculating physics for ${selectedMaterial} material...`;
-    setPhysicsAnalysis(analysis);
   };
 
   return (

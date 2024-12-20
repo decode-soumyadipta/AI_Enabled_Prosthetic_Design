@@ -5,7 +5,8 @@ from flask import Blueprint, request, jsonify, redirect, url_for, render_templat
 from utils.file_processing import save_file
 from intel2.inference import run_inference
 from intel2.mesh_processing import process_mesh
-from intel2.optimization import optimize_model
+from intel2.optimization import optimize_model_with_nncf as optimize_model
+
 
 prosthetic_blueprint = Blueprint('prosthetic', __name__, template_folder='../templates')
 
