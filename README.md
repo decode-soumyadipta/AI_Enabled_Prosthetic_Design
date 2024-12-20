@@ -4,26 +4,33 @@
 
 <p align="center">  
 <img src="https://img.shields.io/badge/Intel%20OpenVINO-4A90E2?style=for-the-badge&logo=intel&logoColor=white"/>  
+<img src="https://img.shields.io/badge/Intel%20Tiber%20AI%20Cloud-0071C5?style=for-the-badge&logo=intel&logoColor=white"/>  
+<img src="https://img.shields.io/badge/AI%20PC%20Max%20Series-4CAF50?style=for-the-badge&logo=intel&logoColor=white"/>  
+<img src="https://img.shields.io/badge/Intel%20GPU-0071C5?style=for-the-badge&logo=intel&logoColor=white"/>  
 <img src="https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=white"/>  
 <img src="https://img.shields.io/badge/Open3D-68A063?style=for-the-badge&logo=openai&logoColor=white"/>  
 <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white"/>  
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black"/>  
 <img src="https://img.shields.io/badge/WebAssembly-654FF0?style=for-the-badge&logo=webassembly&logoColor=white"/>  
-</p>  
+</p>
 
 ---
 
 ## 🚨 What's New in the Upgrade? 🛠️  
 
-During the latest sprint, we significantly enhanced the **AI-driven prosthetic design pipeline**, leveraging **Intel’s OpenVINO Toolkit** for efficient inference, optimization using the **Neural Network Compression Framework (NNCF)**, and advanced STL rendering.  
+During the latest sprint, we significantly enhanced the **AI-driven prosthetic design pipeline**, leveraging **Intel’s OpenVINO Toolkit** for **efficient inference**, optimization using the **Neural Network Compression Framework (NNCF)**, advanced **STL rendering**, and deployment on **Intel Tiber AI Cloud** with **GPU Max Series** for unparalleled performance. All the changes are mentioned/attached below in detail :
 
-| 🎯 **Focus Area**             | 🚀 **Enhancement**                                                                                             | 🔗 **Intel Toolkit**                                                 |  
-|-------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|  
-| **Model Optimization**        | Integrated NNCF for INT8 quantization, improving inference latency and efficiency.                           | **Intel OpenVINO Toolkit**                                           |  
-| **Inference Performance**     | Modularized inference pipeline with OpenVINO runtime supporting dynamic CPU/GPU allocation.                  | **Intel OpenVINO Runtime**                                           |  
-| **Mesh Simplification**       | Upgraded to Intel Open3D for STL mesh optimization with hardware acceleration.                               | **Intel Distribution of Open3D**                                     |  
-| **Frontend Rendering**        | Enhanced STL viewer performance using Intel WebAssembly for faster rendering in browsers.                    | **Intel WebAssembly Tools**                                          |  
-| **Error Handling & Modularity**| Refined the codebase for robustness and improved maintainability.                                             | **System Architecture Best Practices**                               |  
+
+
+| 🎯 **Focus Area**             | 🚀 **Enhancement**                                                                                             | 🔗 **Intel Toolkit**                                                 |
+|-------------------------------|---------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
+| **Model Optimization**        | Integrated **NNCF** for **INT8** quantization, improving inference latency and efficiency.                           | **Intel OpenVINO Toolkit**                                           |
+| **Inference Performance**     | Modularized inference pipeline with **OpenVINO runtime** supporting **dynamic CPU/GPU allocation**.                  | **Intel OpenVINO Runtime**                                           |
+| **Mesh Simplification**       | Upgraded to **Intel Open3D** for STL mesh optimization with hardware acceleration.                               | **Intel Distribution of Open3D**                                     |
+| **Frontend Rendering**        | Enhanced STL viewer performance using **Intel WebAssembly** for faster rendering in browsers.                    | **Intel WebAssembly Tools**                                          |
+| **Intel Cloud Deployment**    | Deployed on **Intel Tiber AI Cloud** using **AI PC Max Series GPU, Ultra Series 1 and 4th Gen Xeon Processor** for exceptional performance gains.               | **Intel Tiber AI Cloud**                                             |
+| **Error Handling & Modularity**| Refined the codebase for robustness and improved maintainability.                                           | **System Architecture Best Practices**                               |
+
 
 ---
 
@@ -101,7 +108,32 @@ The bar graph highlights the inference time and accuracy of the **Simple** and *
 
 ---
 
-### 🖥️ **4. Accelerated STL Viewer Using Intel WebAssembly**  
+### 🌐 **4. Deployment on Intel Tiber AI Cloud**
+We deployed the optimized model on Intel Tiber AI Cloud utilizing the AI PC Max Series GPU, achieving unparalleled performance improvements.
+
+#### **Deployment Details**
+- **Hardware: Intel AI PC Max Series GPU on Intel Tiber AI Developer Cloud.**
+- **Inference Time Reduction: From 0.44s on a local GPU to 0.01s, achieving a 97.7% reduction.**
+- **Technology Stack:**
+  - Intel OpenVINO Toolkit
+  - Neural Network Compression Framework (NNCF)
+  - Intel AI Developer Tools
+
+#### **Performance Comparison**
+
+![Presentation1](https://github.com/user-attachments/assets/6944534b-c414-4222-9cd8-06b733c55421)
+
+The chart showcases the exceptional performance of the Intel AI PC Max Series GPU on the Tiber Cloud, emphasizing the scalability.
+ty and efficiency of Intel technologies in real-world AI applications.
+
+![ascasx](https://github.com/user-attachments/assets/f618c81d-d938-4a03-95fb-5ffb89b54fb4)
+
+![adsc](https://github.com/user-attachments/assets/a7a9c297-6b2a-478e-acb3-3521812bda75)
+
+Deployed over **Intel Ultra Processor Series 1** and **4th Gen Intel Xeon Processor with HBM**. (Scalable, with good inference time)
+
+---
+### 🖥️ **5. Accelerated STL Viewer Using Intel WebAssembly**  
 #### **Key Upgrade**  
 Integrated **Intel WebAssembly** for faster STL file visualization in the browser.  
 
@@ -118,7 +150,7 @@ scene.add(new THREE.Mesh(geometry, material));
 
 ---
 
-### 🛠️ **5. Mesh Simplification with Intel Open3D**  
+### 🛠️ **6. Mesh Simplification with Intel Open3D**  
 #### **Key Upgrade**  
 The STL generation pipeline leverages **Intel Open3D** for high-quality, hardware-accelerated mesh simplification.  
 
@@ -207,4 +239,16 @@ frontend/
 ## 💡 Key Takeaways  
 - **Intel OpenVINO + NNCF**: Achieves real-time inference with optimized AI models.  
 - **Scalable Design**: Modular architecture supports dynamic device allocation (CPU/GPU).  
-- **Efficient Visualization**: High-performance rendering pipeline built with WebAssembly and Three.js.  
+- **Efficient Visualization**: High-performance rendering pipeline built with WebAssembly and Three.js.
+
+---
+
+## 🔮Future Plan
+
+We plan to test the inference on Gaudi Xeon processors in the future, but haven’t completed it yet as it requires a work email and billing setup— we’re working on it with humble patience!
+
+**Our vision includes printing  functional prosthetics with real-time physics analysis of the generated STL with automated AI Suggestions. The result page will look like-**
+
+![c c](https://github.com/user-attachments/assets/c072906a-289c-48ad-8fce-b72538813f78)
+
+To accomplish this, we need to fine-tune our model for seamless compatibility with physics engines. These optimizations can then be further enhanced using **Intel's oneAPI system toolkit**. The intensive computational tasks involved will be efficiently handled by **Intel's Ultra series processors** and dedicated hardware solutions, ensuring peak performance and reliability.
